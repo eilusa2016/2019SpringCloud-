@@ -22,23 +22,6 @@
   	<module>sc-f-gateway-first-sight</module>
   </modules>
   
-  <repositories>
-		<repository>
-			<id>tc_public</id>
-			<name>tongcheng public repository</name>
-			<url>http://nexus.17usoft.com/repository/mvn-all/</url>
-		</repository>
-	</repositories>
-
-	<pluginRepositories>
-		<pluginRepository>
-			<id>tc_public</id>
-			<name>tongcheng public repository</name>
-			<url>http://nexus.17usoft.com/repository/mvn-all/</url>
-		</pluginRepository>
-	</pluginRepositories>
-  
-  
   <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
