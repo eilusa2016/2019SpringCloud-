@@ -9,6 +9,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.circuitbreaker.EnableCircuitBreaker;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
+import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.cloud.netflix.hystrix.EnableHystrix;
 import org.springframework.cloud.netflix.hystrix.dashboard.EnableHystrixDashboard;
@@ -23,12 +24,12 @@ import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 //import brave.sampler.Sampler;
 
 @SpringBootApplication
-@EnableEurekaClient
-@EnableDiscoveryClient
+//@EnableEurekaClient
+//@EnableDiscoveryClient
 @RestController
-@EnableHystrix
+//@EnableHystrix
 @EnableHystrixDashboard
-@EnableCircuitBreaker
+//@EnableCircuitBreaker
 public class ServiceHiApplication {
 	private static final Logger LOG = LoggerFactory.getLogger(ServiceHiApplication.class);
 
@@ -39,16 +40,17 @@ public class ServiceHiApplication {
 	@Value("${server.port}")
     String port;
 
-    @RequestMapping("/hi")
-	@HystrixCommand(fallbackMethod = "hiError")
-    public String home(@RequestParam(value = "name", defaultValue = "XXXX") String name) {
-        return "hi " + name + " ,i am from port:" + port;
-    }
+//    @RequestMapping("/hi")
+//	@HystrixCommand(fallbackMethod = "hiError")
+//    public String home(@RequestParam(value = "name", defaultValue = "XXXX") String name) {
+//        return "hi " + name + " ,i am from port:" + port;
+//    }
 
-	@Autowired
-	private RestTemplate restTemplate;
+//	@Autowired
+//	private RestTemplate restTemplate;
 
 	@Bean
+    @LoadBalanced
 	public RestTemplate getRestTemplate() {
 		return new RestTemplate();
 	}
@@ -60,15 +62,15 @@ public class ServiceHiApplication {
 //		return restTemplate.getForObject("http://localhost:8763/miya", String.class);
 //	}
 
-	@RequestMapping("/info")
-	public String info() {
-		LOG.info(Level.INFO + ":calling trace service-hi ");
-		return "i'm service-hi";
-	}
-
-	public String hiError(String name) {
-		return "hi," + name + ",sorry,error!";
-	}
+//	@RequestMapping("/info")
+//	public String info() {
+//		LOG.info(Level.INFO + ":calling trace service-hi ");
+//		return "i'm service-hi";
+//	}
+//
+//	public String hiError(String name) {
+//		return "hi," + name + ",sorry,error!";
+//	}
 //	@Bean
 //	public Sampler defaultSampler() {
 //		return Sampler.ALWAYS_SAMPLE;
