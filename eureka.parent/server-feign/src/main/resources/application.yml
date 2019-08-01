@@ -1,0 +1,16 @@
+
+spring:
+  profiles:
+    active: dev1
+---
+spring:
+  profiles: dev1
+  application:
+    name: service-feign
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+server:
+  port: 8701

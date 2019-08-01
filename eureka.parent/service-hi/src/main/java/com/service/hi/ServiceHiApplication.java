@@ -24,8 +24,8 @@ import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 //import brave.sampler.Sampler;
 
 @SpringBootApplication
-//@EnableEurekaClient
-//@EnableDiscoveryClient
+@EnableEurekaClient
+@EnableDiscoveryClient
 @RestController
 //@EnableHystrix
 @EnableHystrixDashboard
@@ -62,11 +62,11 @@ public class ServiceHiApplication {
 //		return restTemplate.getForObject("http://localhost:8763/miya", String.class);
 //	}
 
-//	@RequestMapping("/info")
-//	public String info() {
-//		LOG.info(Level.INFO + ":calling trace service-hi ");
-//		return "i'm service-hi";
-//	}
+	@RequestMapping("/info")
+	public String info() {
+		LOG.info(Level.INFO + ":calling trace service-hi ");
+		return "i'm service-hi";
+	}
 //
 //	public String hiError(String name) {
 //		return "hi," + name + ",sorry,error!";

@@ -10,7 +10,7 @@ public class RibbonService {
 	RestTemplate restTemplate;
 	
 	public  String  getRibbonResult(String name) {
-		return restTemplate.getForObject("http://SERVICE-RIBBON/name/?name="+name, String.class);
+		return restTemplate.getForObject("http://SERVICE-RIBBON/ribbon/name/?name="+name, String.class);
 	}
 	
 }
