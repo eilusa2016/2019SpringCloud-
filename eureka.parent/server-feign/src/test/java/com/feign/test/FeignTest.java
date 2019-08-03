@@ -6,6 +6,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 
@@ -30,9 +31,11 @@ public class FeignTest {
 	@Test
 	public  void  testFeignService() {
 		for(int  i=0;i<10;i++) {
-			LOG.info("结果="+feignService.testRibbon("TO_"+i));
+			ResponseEntity<byte[]> entity=feignService.testRibbonGZIP("TO_"+i);
+			LOG.info("结果="+new String(entity.getBody()));
+			//LOG.info("结果="+feignService.testRibbon("TO_"+i));
 		}
-		LOG.info("结果="+feignHiService.info());
+		//LOG.info("结果="+feignHiService.info());
 	
 		while(true) {
 			
