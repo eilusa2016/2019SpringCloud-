@@ -6,7 +6,7 @@ import feign.RetryableException;
 import feign.Retryer;
 
 public class SimpleRetryer implements Retryer{
-	 private final int maxAttempts;
+	   private final int maxAttempts;
 	    private final long period;
 	    private final long maxPeriod;
 	    int attempt;
